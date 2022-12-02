@@ -108,7 +108,7 @@ checkstyle {
 }
 
 def versions = [
-        jupiter           : '5.3.2',
+        jupiter           : '5.9.1',
         lombok            : '1.18.8',
         springfoxSwagger  : '2.9.2',
         springBoot        : '2.3.4.RELEASE'
