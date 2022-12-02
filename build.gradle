@@ -144,7 +144,7 @@ dependencies {
     testCompile("org.junit.jupiter:junit-jupiter-api:5.9.1")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.9.1")
     testImplementation('org.junit.jupiter:junit-jupiter-api:5.9.1')
-    testImplementation('org.mockito:mockito-core:2.7.22')
+    testImplementation('org.mockito:mockito-core:2.28.2')
 
     testImplementation group: "com.gilecode.yagson", name:"j9-reflection-utils", version:"1.0"
     testImplementation group: "io.jsonwebtoken", name: "jjwt", version: "0.9.1"
