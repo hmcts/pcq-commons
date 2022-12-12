@@ -2,7 +2,7 @@
 plugins {
     id 'java'
     id 'checkstyle'
-    id 'uk.gov.hmcts.java' version '0.12.33'
+    id 'uk.gov.hmcts.java' version '0.12.35'
     id "io.freefair.lombok" version "5.3.3.3"
     id 'com.github.ben-manes.versions' version '0.42.0'
     id 'java-library'
