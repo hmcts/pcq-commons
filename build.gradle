@@ -108,7 +108,7 @@ def versions = [
         jupiter           : '5.9.1',
         lombok            : '1.18.24',
         springfoxSwagger  : '3.0.0',
-        springBoot        : '2.3.12.RELEASE'
+        springBoot        : '2.7.7'
 ]
 
 dependencies {
