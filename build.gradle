@@ -125,7 +125,7 @@ dependencies {
 
     implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 
-    implementation group: "io.jsonwebtoken", name: "jjwt", version: "0.9.1"
+    implementation group: "io.jsonwebtoken", name: "jjwt", version: "0.12.3"
     
     implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
     implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '4.0.3'
@@ -141,7 +141,7 @@ dependencies {
     testImplementation('org.junit.jupiter:junit-jupiter-api:5.9.3')
     testImplementation('org.mockito:mockito-core:5.6.0')
 
-    testImplementation group: "io.jsonwebtoken", name: "jjwt", version: "0.9.1"
+    testImplementation group: "io.jsonwebtoken", name: "jjwt", version: "0.12.3"
 
 
 }
