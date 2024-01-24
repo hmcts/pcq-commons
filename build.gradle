@@ -133,13 +133,13 @@ dependencies {
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.jupiter
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
 
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.8.0'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.10.0'
     testImplementation group: 'org.mockito', name: 'mockito-inline', version: '5.2.0'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.3")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.3")
     testImplementation('org.junit.jupiter:junit-jupiter-api:5.9.3')
-    testImplementation('org.mockito:mockito-core:5.8.0')
+    testImplementation('org.mockito:mockito-core:5.10.0')
 
     testImplementation group: "io.jsonwebtoken", name: "jjwt", version: "0.9.1"
 
