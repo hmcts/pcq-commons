@@ -27,8 +27,12 @@ import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@SuppressWarnings({"PMD.JUnitAssertionsShouldIncludeMessage", "PMD.CloseResource",
-        "PMD.DataflowAnomalyAnalysis", "PMD.AvoidDuplicateLiterals"})
+@SuppressWarnings({
+    "PMD.JUnitAssertionsShouldIncludeMessage",
+    "PMD.CloseResource",
+    "PMD.DataflowAnomalyAnalysis",
+    "PMD.AvoidDuplicateLiterals"
+})
 @Slf4j
 public class JsonFeignResponseUtilTest {
 
