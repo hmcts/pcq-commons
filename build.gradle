@@ -130,7 +130,7 @@ dependencies {
 
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: versions.jupiter
     testImplementation group: 'org.mockito', name: 'mockito-core', version: versions.mockito
-    testImplementation group: "io.jsonwebtoken", name: "jjwt", version: "0.9.1"
+    testImplementation group: "io.jsonwebtoken", name: "jjwt", version: "0.12.5"
 
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.jupiter
     testRuntimeOnly group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.10.2'
