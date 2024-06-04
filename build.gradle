@@ -112,17 +112,20 @@ def versions = [
 ]
 
 dependencies {
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: versions.jackson
+    implementation group: 'io.github.openfeign.form', name: 'feign-form-spring', version: versions.feignForm
+    implementation group: 'io.github.openfeign.form', name: 'feign-form', version: versions.feignForm
+    implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.14.0'
+    implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '4.0.5'
     implementation group: 'org.projectlombok', name: 'lombok', version: versions.lombok
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: versions.springBoot
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '4.1.2'
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.14.0'
-    implementation group: 'io.github.openfeign.form', name: 'feign-form', version: versions.feignForm
-    implementation group: 'io.github.openfeign.form', name: 'feign-form-spring', version: versions.feignForm
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: versions.jackson
-    implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
-    implementation group: "io.jsonwebtoken", name: "jjwt", version: versions.jjwt
-    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
-    implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '4.0.5'
+    implementation group: "io.jsonwebtoken", name: "jjwt-api", version: versions.jjwt
+
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: versions.jjwt
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: versions.jjwt
 
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
     testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.12.0'
@@ -130,7 +133,6 @@ dependencies {
 
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: versions.jupiter
     testImplementation group: 'org.mockito', name: 'mockito-core', version: versions.mockito
-    testImplementation group: "io.jsonwebtoken", name: "jjwt", version: "0.12.5"
 
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.jupiter
     testRuntimeOnly group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.10.2'
