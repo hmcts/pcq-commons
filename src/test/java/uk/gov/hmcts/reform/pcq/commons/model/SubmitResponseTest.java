@@ -3,7 +3,7 @@ package uk.gov.hmcts.reform.pcq.commons.model;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SubmitResponseTest {
+class SubmitResponseTest {
 
     private static final String PCQ_ID = "PCQ_ID1";
     private static final String STATUS = "Success";

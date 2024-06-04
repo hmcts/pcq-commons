@@ -1,7 +1,10 @@
 package uk.gov.hmcts.reform.pcq.commons.model;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Arrays;
 
@@ -11,14 +14,19 @@ import java.util.Arrays;
 @NoArgsConstructor
 public class PcqWithoutCaseResponse implements Serializable {
 
-    public static final long serialVersionUID = 432973322;
+    @Serial
+    private static final long serialVersionUID = 432973322;
 
     private static final String[] EMPTY_PCQ_ID_RESPONSE = {};
 
     private String[] pcqId;
 
+    @Getter
+    @Setter
     private String responseStatus;
 
+    @Getter
+    @Setter
     private String responseStatusCode;
 
     public String[] getPcqId() {
@@ -35,21 +43,5 @@ public class PcqWithoutCaseResponse implements Serializable {
         } else {
             this.pcqId = Arrays.copyOf(pcqId, pcqId.length);
         }
-    }
-
-    public String getResponseStatus() {
-        return responseStatus;
-    }
-
-    public void setResponseStatus(String responseStatus) {
-        this.responseStatus = responseStatus;
-    }
-
-    public String getResponseStatusCode() {
-        return responseStatusCode;
-    }
-
-    public void setResponseStatusCode(String responseStatusCode) {
-        this.responseStatusCode = responseStatusCode;
     }
 }

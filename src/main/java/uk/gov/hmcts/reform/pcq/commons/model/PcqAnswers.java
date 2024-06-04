@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -19,7 +20,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class PcqAnswers implements Serializable {
 
-    public static final long serialVersionUID = 3328743L;
+    @Serial
+    private static final long serialVersionUID = 3328743L;
 
     @JsonProperty("dob_provided")
     private Integer dobProvided;

@@ -13,6 +13,7 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -21,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SuppressWarnings("PMD.TooManyMethods")
-public class PcqUtilsTest {
+class PcqUtilsTest {
 
     // Timestamp is Saturday, 23 May 2020 15:12:00 GMT
     private static final Long EPOCH_TIMESTAMP = 1590246720000L;
@@ -30,21 +31,21 @@ public class PcqUtilsTest {
     private static final String DOB_VALIDATION_MSG = "Dob validation should not return true";
 
     @Test
-    public void testConvertTimeStampToStringSuccess() {
+    void testConvertTimeStampToStringSuccess() {
         String stringConversion = PcqUtils.convertTimeStampToString(new Timestamp(EPOCH_TIMESTAMP));
 
         assertEquals(STRING_TIMESTAMP, stringConversion, "String conversion different.");
     }
 
     @Test
-    public void testConvertDateToString() {
+    void testConvertDateToString() {
         String stringConversion = PcqUtils.convertDateToString(new Date(EPOCH_TIMESTAMP));
 
         assertEquals(STRING_TIMESTAMP, stringConversion, "String conversion different.");
     }
 
     @Test
-    public void testGenerateResponseEntity() {
+    void testGenerateResponseEntity() {
         String testPcqId = "1234567890";
         HttpStatus testHttpStatus = HttpStatus.OK;
         String testMessage = "Test Message";
@@ -59,21 +60,21 @@ public class PcqUtilsTest {
     }
 
     @Test
-    public void testGetTimeFromString() {
+    void testGetTimeFromString() {
         Timestamp timestampConversion = PcqUtils.getTimeFromString(STRING_TIMESTAMP);
 
         assertEquals(EPOCH_TIMESTAMP, timestampConversion.getTime(), "Timestamp conversion different.");
     }
 
     @Test
-    public void testGetDateFromString() {
+    void testGetDateFromString() {
         Date dateConversion = PcqUtils.getDateFromString(STRING_TIMESTAMP);
 
         assertEquals("2020-05-23", dateConversion.toString(), "Date conversion different.");
     }
 
     @Test
-    public void testGetDateTimeInPast() {
+    void testGetDateTimeInPast() {
         Timestamp timestampInPast = PcqUtils.getDateTimeInPast(3L);
         LocalDate dateInPast = timestampInPast.toLocalDateTime().toLocalDate();
 
@@ -82,11 +83,11 @@ public class PcqUtilsTest {
 
         Long daysBetween = ChronoUnit.DAYS.between(dateInPast, dateNow);
 
-        assertEquals(daysBetween, 3L, "Days in past different.");
+        assertEquals(3L, daysBetween, "Days in past different.");
     }
 
     @Test
-    public void testGenerateSubmitResponseEntity() {
+    void testGenerateSubmitResponseEntity() {
         String testPcqId = "1234567890";
         HttpStatus testHttpStatus = HttpStatus.OK;
         String testMessage = "Test Message";
@@ -104,7 +105,7 @@ public class PcqUtilsTest {
     }
 
     @Test
-    public void testExtractDcnNumberSuccess() {
+    void testExtractDcnNumberSuccess() {
         String testFileName = "1789034567_01-01-1900-12-00-00.zip";
 
         String extractedDcnNumber = PcqUtils.extractDcnNumberFromFile(testFileName);
@@ -113,7 +114,7 @@ public class PcqUtilsTest {
     }
 
     @Test
-    public void testExtractDcnNumberEmpty() {
+    void testExtractDcnNumberEmpty() {
         String testFileName = "";
 
         String extractedDcnNumber = PcqUtils.extractDcnNumberFromFile(testFileName);
@@ -122,14 +123,14 @@ public class PcqUtilsTest {
     }
 
     @Test
-    public void testExtractDcnNumberNull() {
+    void testExtractDcnNumberNull() {
         String extractedDcnNumber = PcqUtils.extractDcnNumberFromFile(null);
 
         assertNull(extractedDcnNumber, "DCN Number Different.");
     }
 
     @Test
-    public void testGetCurrentCompletedDate() {
+    void testGetCurrentCompletedDate() {
         Pattern pattern = Pattern.compile("\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d(?:\\.\\d+)?Z?");
         Matcher matcher = pattern.matcher(PcqUtils.getCurrentCompletedDate());
 
@@ -137,12 +138,12 @@ public class PcqUtilsTest {
     }
 
     @Test
-    public void testGenerateUuidNotNull() {
+    void testGenerateUuidNotNull() {
         assertNotNull(PcqUtils.generateUuid(), "Uuid is null");
     }
 
     @Test
-    public void testGenerateUuidRandom() {
+    void testGenerateUuidRandom() {
         String pcqIdOne = PcqUtils.generateUuid();
         String pcqIdSecond = PcqUtils.generateUuid();
 
@@ -150,7 +151,7 @@ public class PcqUtilsTest {
     }
 
     @Test
-    public void invalidDobCharacters() {
+    void invalidDobCharacters() {
         // User has not supplied any dob data. So the day, month and year will be empty strings.
         String invalidDob = "--";
         boolean isDobValid = PcqUtils.isDobValid(invalidDob);
@@ -178,7 +179,7 @@ public class PcqUtilsTest {
     }
 
     @Test
-    public void invalidDobDay() {
+    void invalidDobDay() {
         //User has supplied an numeric but invalid day field
         String invalidDobDay = "1900-01-00";
         boolean isDobValid = PcqUtils.isDobValid(invalidDobDay);
@@ -194,7 +195,7 @@ public class PcqUtilsTest {
     }
 
     @Test
-    public void invalidDobMonth() {
+    void invalidDobMonth() {
         //User has supplied an numeric but invalid month field
         String invalidDobMonth = "1900-00-01";
         boolean isDobValid = PcqUtils.isDobValid(invalidDobMonth);
@@ -206,7 +207,7 @@ public class PcqUtilsTest {
     }
 
     @Test
-    public void invalidDobYear() {
+    void invalidDobYear() {
         //User has supplied an numeric but invalid year field
         String invalidDobYear = "01-01-01";
         boolean isDobValid = PcqUtils.isDobValid(invalidDobYear);
@@ -218,7 +219,7 @@ public class PcqUtilsTest {
     }
 
     @Test
-    public void dobValidation() {
+    void dobValidation() {
         //User has supplied an numeric and valid dob data
         String validDob = "2001-01-31";
         boolean isDobValid = PcqUtils.isDobValid(validDob);
@@ -234,7 +235,7 @@ public class PcqUtilsTest {
     }
 
     @Test
-    public void testCompleteDobString() {
+    void testCompleteDobString() {
         Pattern pattern = Pattern.compile("\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d(?:\\.\\d+)?Z?");
         String dobPartial = "1900-01-01";
         String completeDob = PcqUtils.generateCompleteDobString(dobPartial);
@@ -243,14 +244,15 @@ public class PcqUtilsTest {
     }
 
     @Test
-    public void testNullIfEmpty() {
+    void testNullIfEmpty() {
         assertNull(PcqUtils.nullIfEmpty(""), "Empty string is not null.");
     }
 
     @Test
-    public void testAuthorisationToken() {
-        String token = PcqUtils.generateAuthorizationToken("Test", "TestSubject", "TestAuthority");
-        assertNotNull(token, "Authorisation token is null");
+    void testAuthorisationToken() {
+        String a256bitSecretKey = "a-very-long-and-boring-secret-key";
+        String token = PcqUtils.generateAuthorizationToken(a256bitSecretKey, "TestSubject", "TestAuthority");
+        assertThat(token).startsWith("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJUZXN0U3ViamVjdCIsImF1dGhvcml0aWVzIjpbIlRlc3RBd");
     }
 
 }

@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
-public class ExternalApiExceptionTest {
+class ExternalApiExceptionTest {
 
     @Test
-    public void externalApiExceptionTest() {
+    void externalApiExceptionTest() {
         ExternalApiException externalApiException = new ExternalApiException(BAD_REQUEST, "BAD REQUEST");
 
         assertEquals("400 BAD_REQUEST", externalApiException.getHttpStatus().toString(),"Not expected status");

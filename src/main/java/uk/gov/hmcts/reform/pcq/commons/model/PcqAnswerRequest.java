@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -15,7 +16,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class PcqAnswerRequest implements Serializable {
 
-    public static final long serialVersionUID = 4328743L;
+    @Serial
+    private static final long serialVersionUID = 4328743L;
 
     private String pcqId;
 
@@ -43,7 +45,6 @@ public class PcqAnswerRequest implements Serializable {
     private PcqAnswers pcqAnswers;
 
     public PcqAnswerRequest(String pcqId) {
-
         this.pcqId = pcqId;
     }
 

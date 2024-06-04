@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @Getter
@@ -13,7 +14,8 @@ import java.io.Serializable;
 @SuppressWarnings({"PMD.TooManyFields"})
 public class PcqAnswerResponse implements Serializable {
 
-    public static final long serialVersionUID = 1328743L;
+    @Serial
+    private static final long serialVersionUID = 1328743L;
 
     @JsonProperty("pcqId")
     private String pcqId;

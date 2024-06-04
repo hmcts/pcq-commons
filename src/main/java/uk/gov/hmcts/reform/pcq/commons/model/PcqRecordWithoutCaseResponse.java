@@ -2,6 +2,7 @@ package uk.gov.hmcts.reform.pcq.commons.model;
 
 import lombok.NoArgsConstructor;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Arrays;
 
@@ -11,7 +12,8 @@ import java.util.Arrays;
 @NoArgsConstructor
 public class PcqRecordWithoutCaseResponse implements Serializable {
 
-    public static final long serialVersionUID = 432943329;
+    @Serial
+    private static final long serialVersionUID = 432943329;
 
     private static final PcqAnswerResponse[] EMPTY_PCQ_ANSWER_RESPONSE = {};
 

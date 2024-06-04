@@ -34,7 +34,7 @@ import static org.mockito.Mockito.when;
     "PMD.AvoidDuplicateLiterals"
 })
 @Slf4j
-public class JsonFeignResponseUtilTest {
+class JsonFeignResponseUtilTest {
 
     private static final String ENCODING_STR = "content-encoding";
 
@@ -69,7 +69,7 @@ public class JsonFeignResponseUtilTest {
 
     @Test
     @SuppressWarnings("unchecked")
-    public void testDecode() {
+    void testDecode() {
         Map<String, Collection<String>> header = new ConcurrentHashMap<>();
         Collection<String> list = new ArrayList<>();
         header.put(ENCODING_STR, list);
@@ -93,7 +93,7 @@ public class JsonFeignResponseUtilTest {
 
     @Test
     @SuppressWarnings("unchecked")
-    public void testDecode_fails_with_ioException() {
+    void testDecode_fails_with_ioException() {
         Map<String, Collection<String>> header = new ConcurrentHashMap<>();
         Collection<String> list = new ArrayList<>();
         header.put(ENCODING_STR, list);
@@ -126,7 +126,7 @@ public class JsonFeignResponseUtilTest {
     }
 
     @Test
-    public void test_convertHeaders() {
+    void test_convertHeaders() {
         Map<String, Collection<String>> header = new ConcurrentHashMap<>();
         Collection<String> list = new ArrayList<>(Arrays.asList("gzip", "request-context", "x-powered-by",
                 "content-length"));
@@ -143,7 +143,7 @@ public class JsonFeignResponseUtilTest {
     }
 
     @Test
-    public void test_toResponseEntity_with_payload_not_empty() {
+    void test_toResponseEntity_with_payload_not_empty() {
         Map<String, Collection<String>> header = new ConcurrentHashMap<>();
         Collection<String> list = new ArrayList<>(Arrays.asList("a", "b"));
         header.put(ENCODING_STR, list);
@@ -175,7 +175,7 @@ public class JsonFeignResponseUtilTest {
     }
 
     @Test
-    public void privateConstructorTest() throws Exception {
+    void privateConstructorTest() throws Exception {
         Constructor<JsonFeignResponseUtil> constructor = JsonFeignResponseUtil.class.getDeclaredConstructor();
         assertFalse(constructor.canAccess(null),"Constructor is not accessible");
         constructor.setAccessible(true);

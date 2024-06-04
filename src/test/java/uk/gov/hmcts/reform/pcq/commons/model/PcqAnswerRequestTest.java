@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 
-public class PcqAnswerRequestTest {
+class PcqAnswerRequestTest {
     private static final String PCQ_ID = "TEST_PCQ";
     private static final String CASE_ID = "CASE_ID";
     private static final String PARTY_ID = "PARTY_ID";

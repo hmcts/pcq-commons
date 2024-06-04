@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PcqScannableItemsTest {
+class PcqScannableItemsTest {
 
     private static final String DCN_NUMBER = "102020303";
     private static final String DOCUMENT_TYPE = "EQ11";

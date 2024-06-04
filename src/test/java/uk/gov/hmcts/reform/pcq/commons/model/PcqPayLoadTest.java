@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class PcqPayLoadTest {
+class PcqPayLoadTest {
 
     private static final String TEST_FIELD_NAME_1 = "TEST_FIELD1";
     private static final String TEST_FIELD_NAME_2 = "TEST_FIELD2";

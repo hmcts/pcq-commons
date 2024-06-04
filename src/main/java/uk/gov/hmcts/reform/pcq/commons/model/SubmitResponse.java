@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 
@@ -12,7 +13,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class SubmitResponse implements Serializable {
 
-    public static final long serialVersionUID = 5328745L;
+    @Serial
+    private static final long serialVersionUID = 5328745L;
 
     private String pcqId;
 

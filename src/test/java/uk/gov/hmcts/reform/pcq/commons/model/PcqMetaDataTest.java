@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class PcqMetaDataTest {
+class PcqMetaDataTest {
 
     private static final String PO_BOX = "123";
     private static final String JURISDICTION = "TEST_SERVICE";
@@ -40,26 +40,7 @@ public class PcqMetaDataTest {
 
     @Test
     void testMetaDataWithScanableItems() {
-        PcqMetaData pcqMetaData = new PcqMetaData();
-        pcqMetaData.setPoBox(PO_BOX);
-        pcqMetaData.setDeliveryDate(DELIVERY_DATE);
-        pcqMetaData.setJurisdiction(JURISDICTION);
-        pcqMetaData.setOpeningDate(OPENING_DATE);
-        pcqMetaData.setOriginatingDcnNumber(ORIGINATING_DCN_NUMBER);
-        pcqMetaData.setZipFileCreatedDate(ZIP_CREATED_DATE);
-        pcqMetaData.setZipFileName(ZIP_FILE_NAME);
-
-        PcqScannableItems scannableItems = new PcqScannableItems();
-        scannableItems.setDocumentControlNumber("DCN_Test");
-        scannableItems.setOcrData("Ocr_1");
-
-        PcqScannableItems scannableItems1 = new PcqScannableItems();
-        scannableItems1.setDocumentControlNumber("DCN_Test2");
-        scannableItems1.setOcrData("Ocr_2");
-
-        PcqScannableItems[] pcqScannableItems = {scannableItems, scannableItems1};
-
-        pcqMetaData.setScannableItems(pcqScannableItems);
+        PcqMetaData pcqMetaData = getPcqMetaData();
 
         assertEquals(PO_BOX, pcqMetaData.getPoBox(), "PO Box is invalid");
         assertEquals(DELIVERY_DATE, pcqMetaData.getDeliveryDate(), "Delivery is invalid");
@@ -80,5 +61,29 @@ public class PcqMetaDataTest {
                 "Document control nunber is not correct.");
         assertEquals("Ocr_2", scannableItemsTest[1].getOcrData(),
                 "Ocr Data is not correct.");
+    }
+
+    private static PcqMetaData getPcqMetaData() {
+        PcqMetaData pcqMetaData = new PcqMetaData();
+        pcqMetaData.setPoBox(PO_BOX);
+        pcqMetaData.setDeliveryDate(DELIVERY_DATE);
+        pcqMetaData.setJurisdiction(JURISDICTION);
+        pcqMetaData.setOpeningDate(OPENING_DATE);
+        pcqMetaData.setOriginatingDcnNumber(ORIGINATING_DCN_NUMBER);
+        pcqMetaData.setZipFileCreatedDate(ZIP_CREATED_DATE);
+        pcqMetaData.setZipFileName(ZIP_FILE_NAME);
+
+        PcqScannableItems scannableItems = new PcqScannableItems();
+        scannableItems.setDocumentControlNumber("DCN_Test");
+        scannableItems.setOcrData("Ocr_1");
+
+        PcqScannableItems scannableItems1 = new PcqScannableItems();
+        scannableItems1.setDocumentControlNumber("DCN_Test2");
+        scannableItems1.setOcrData("Ocr_2");
+
+        PcqScannableItems[] pcqScannableItems = {scannableItems, scannableItems1};
+
+        pcqMetaData.setScannableItems(pcqScannableItems);
+        return pcqMetaData;
     }
 }

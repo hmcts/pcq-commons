@@ -1,12 +1,12 @@
 package uk.gov.hmcts.reform.pcq.commons.utils;
 
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.util.HtmlUtils;
-import org.apache.commons.lang3.StringUtils;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import uk.gov.hmcts.reform.pcq.commons.model.SubmitResponse;
 
 import java.sql.Date;
@@ -17,14 +17,15 @@ import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.crypto.SecretKey;
 
 @Slf4j
 public class PcqUtils {
@@ -154,13 +155,14 @@ public class PcqUtils {
         long currentTime = System.currentTimeMillis();
         authorities.add(authoritiesStr);
 
+        SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes());
+
         return Jwts.builder()
-                .setSubject(subject)
+                .subject(subject)
                 .claim("authorities", authorities)
-                .setIssuedAt(new Date(currentTime))
-                .setExpiration(new Date(currentTime + 500_000))  // in milliseconds
-                .signWith(SignatureAlgorithm.HS256, secretKey.getBytes())
+                .issuedAt(new Date(currentTime))
+                .expiration(new Date(currentTime + 500_000))  // in milliseconds
+                .signWith(key)
                 .compact();
     }
-
 }

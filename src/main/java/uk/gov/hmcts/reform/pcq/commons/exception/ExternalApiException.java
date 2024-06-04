@@ -3,10 +3,13 @@ package uk.gov.hmcts.reform.pcq.commons.exception;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+import java.io.Serial;
+
 @Getter
 public class ExternalApiException extends RuntimeException {
 
-    public static final long serialVersionUID = 43287452;
+    @Serial
+    private static final long serialVersionUID = 43287452;
 
     private final HttpStatus httpStatus;
 
@@ -16,10 +19,6 @@ public class ExternalApiException extends RuntimeException {
         super(errorMessage);
         this.httpStatus = httpStatus;
         this.errorMessage = errorMessage;
-    }
-
-    public HttpStatus getHttpStatus() {
-        return httpStatus;
     }
 
 }
