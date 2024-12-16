@@ -105,8 +105,8 @@ def versions = [
         feignForm         : '3.8.0',
         jackson           : '2.18.0',
         jjwt              : '0.12.6',
-        junit             : '5.11.1',
-        junitPlatform     : '1.11.1',
+        junit             : '5.11.4',
+        junitPlatform     : '1.11.4',
         lombok            : '1.18.34',
         mockito           : '5.14.1',
         springBoot        : '3.3.4'
