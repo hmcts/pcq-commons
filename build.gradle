@@ -4,7 +4,7 @@ plugins {
     id 'checkstyle'
     id 'uk.gov.hmcts.java' version '0.12.63'
     id 'io.spring.dependency-management' version '1.1.6'
-    id 'org.springframework.boot' version '3.3.4'
+    id 'org.springframework.boot' version '3.4.0'
     id "io.freefair.lombok" version "8.11"
     id 'com.github.ben-manes.versions' version '0.51.0'
     id 'java-library'
@@ -109,7 +109,7 @@ def versions = [
         junitPlatform     : '1.11.4',
         lombok            : '1.18.34',
         mockito           : '5.14.2',
-        springBoot        : '3.3.4'
+        springBoot        : '3.4.0'
 ]
 
 dependencies {
