@@ -117,7 +117,7 @@ def versions = [
         jjwt              : '0.13.0',
         junit             : '5.11.4',
         junitPlatform     : '1.11.4',
-        lombok            : '1.18.38',
+        lombok            : '1.18.40',
         mockito           : '5.19.0',
         springBoot        : '3.5.5'
 ]
