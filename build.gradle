@@ -113,7 +113,7 @@ checkstyle {
 
 def versions = [
         feignForm         : '3.8.0',
-        jackson           : '2.20.0',
+        jackson           : '2.20.1',
         jjwt              : '0.13.0',
         junit             : '5.11.4',
         junitPlatform     : '1.11.4',
