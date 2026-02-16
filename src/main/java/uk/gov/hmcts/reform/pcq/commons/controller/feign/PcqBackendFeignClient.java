@@ -19,10 +19,13 @@ public interface PcqBackendFeignClient {
 
     @GetMapping("/pcq/backend/consolidation/pcqRecordWithoutCase")
     @RequestLine("GET /pcq/backend/consolidation/pcqRecordWithoutCase")
-    Response getPcqWithoutCase(@RequestHeader("X-Correlation-Id") String token);
+    Response getPcqWithoutCase(@RequestHeader("X-Correlation-Id") String token,
+                               @RequestHeader("ServiceAuthorization") String serviceAuthorization);
 
     @PutMapping("/pcq/backend/consolidation/addCaseForPCQ/{pcqId}")
-    Response addCaseForPcq(@RequestHeader("X-Correlation-Id") String token, @PathVariable("pcqId") String pcqId,
+    Response addCaseForPcq(@RequestHeader("X-Correlation-Id") String token,
+                           @RequestHeader("ServiceAuthorization") String serviceAuthorization,
+                           @PathVariable("pcqId") String pcqId,
                            @RequestParam("caseId") String caseId);
 
     @PostMapping("/pcq/backend/submitAnswers")
