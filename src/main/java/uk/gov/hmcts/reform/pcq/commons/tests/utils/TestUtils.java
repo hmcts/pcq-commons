@@ -1,7 +1,7 @@
 package uk.gov.hmcts.reform.pcq.commons.tests.utils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.core.io.ClassPathResource;
+import tools.jackson.databind.ObjectMapper;
 import uk.gov.hmcts.reform.pcq.commons.model.PcqAnswerRequest;
 
 import java.io.File;
