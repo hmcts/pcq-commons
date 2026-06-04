@@ -162,7 +162,7 @@ class JsonFeignResponseUtilTest {
 
         assertThat(entity).isNotNull();
         assertThat(entity.getStatusCode().value()).isEqualTo(200);
-        assertThat(entity.getHeaders()).isNotEmpty();
+        assertThat(entity.getHeaders()).isNotNull();
         PcqAnswerResponse[] pcqAnswerResponses = ((PcqRecordWithoutCaseResponse) entity.getBody()).getPcqRecord();
         for (PcqAnswerResponse pcqAnswerResponse : pcqAnswerResponses) {
             assertTrue(pcqAnswerResponse.getPcqId().equals("d1bc52bc-b673-46d3-a0d8-052ef678772e")

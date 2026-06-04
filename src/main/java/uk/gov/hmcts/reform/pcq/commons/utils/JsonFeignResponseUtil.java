@@ -1,12 +1,14 @@
 package uk.gov.hmcts.reform.pcq.commons.utils;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Response;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,8 +21,9 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 @SuppressWarnings("unchecked")
 public final class JsonFeignResponseUtil {
-    private static final ObjectMapper JSON = new ObjectMapper().configure(
-            DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    private static final ObjectMapper JSON = JsonMapper.builder()
+        .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+        .build();
 
     private JsonFeignResponseUtil() {
 
@@ -33,10 +36,10 @@ public final class JsonFeignResponseUtil {
     public static ResponseEntity toResponseEntity(Response response, Class clazz) throws IOException {
         Optional payload = decode(response, clazz);
 
-        return new ResponseEntity(
-                payload.orElse(null),
-                convertHeaders(response.headers()),
-                HttpStatus.valueOf(response.status()));
+        return ResponseEntity
+            .status(HttpStatus.valueOf(response.status()))
+            .headers(new HttpHeaders(convertHeaders(response.headers())))
+            .body(payload.orElse(null));
     }
 
     @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
