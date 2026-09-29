@@ -14,13 +14,15 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Clock;
+import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
@@ -43,11 +45,13 @@ public class PcqUtils {
 
     public static String convertTimeStampToString(Timestamp timestamp) {
         SimpleDateFormat dateFormat = new SimpleDateFormat(COMPLETED_DATE_FORMAT, Locale.UK);
+        dateFormat.setTimeZone(TimeZone.getTimeZone(ZoneOffset.UTC));
         return dateFormat.format(timestamp);
     }
 
     public static String convertDateToString(Date date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat(DOB_FORMAT, Locale.UK);
+        dateFormat.setTimeZone(TimeZone.getTimeZone(ZoneOffset.UTC));
         return dateFormat.format(date);
     }
 
@@ -62,22 +66,17 @@ public class PcqUtils {
     }
 
     public static Timestamp getTimeFromString(String timeStampStr) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(COMPLETED_DATE_FORMAT);
-        LocalDateTime localDateTime = LocalDateTime.from(formatter.parse(timeStampStr));
-
-        return Timestamp.valueOf(localDateTime);
+        return Timestamp.from(Instant.parse(timeStampStr));
     }
 
     public static Date getDateFromString(String dateStr) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DOB_FORMAT);
-        LocalDate localDate = LocalDate.from(formatter.parse(dateStr));
-        return Date.valueOf(localDate);
+        LocalDate date = Instant.parse(dateStr).atZone(ZoneOffset.UTC).toLocalDate();
+        return Date.valueOf(date);
     }
 
     public static Timestamp getDateTimeInPast(long numberOfDays) {
-        LocalDateTime currentDateTime = LocalDateTime.now(Clock.systemUTC());
-
-        return Timestamp.valueOf(currentDateTime.minusDays(numberOfDays));
+        Instant currentInstant = Instant.now(Clock.systemUTC());
+        return Timestamp.from(currentInstant.minus(numberOfDays, ChronoUnit.DAYS));
     }
 
     public static ResponseEntity<SubmitResponse> generateSubmitResponseEntity(String pcqId, HttpStatus code,
@@ -103,8 +102,9 @@ public class PcqUtils {
     }
 
     public static String getCurrentCompletedDate() {
-        Timestamp completedTime = Timestamp.valueOf(LocalDateTime.now());
+        Timestamp completedTime = Timestamp.from(Instant.now(Clock.systemUTC()));
         SimpleDateFormat dateFormat = new SimpleDateFormat(COMPLETED_DATE_FORMAT, Locale.UK);
+        dateFormat.setTimeZone(TimeZone.getTimeZone(ZoneOffset.UTC));
         return dateFormat.format(completedTime);
     }
 
