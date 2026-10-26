@@ -128,7 +128,7 @@ dependencies {
     implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '4.0.9'
     implementation group: 'org.projectlombok', name: 'lombok', version: versions.lombok
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: versions.springBoot
-    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '5.0.3'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '5.0.4'
     implementation group: "io.jsonwebtoken", name: "jjwt-api", version: versions.jjwt
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: versions.jacksonAnnotations
 
